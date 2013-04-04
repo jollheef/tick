@@ -1,0 +1,20 @@
+Time counter for common lisp application
+
+Example of use:
+
+CL-USER> (tick:with-tick
+	   (sleep 1)
+	   (tick:tick))
+"00:00:01"
+CL-USER> (tick:with-tick
+	   (sleep 1)
+	   (tick:ltick))
+(0 0 1)
+CL-USER> (tick:with-tick
+	   (loop repeat 3 do
+		(format t "Hello, time from start: ~s~%" (tick:tick))
+		(sleep 1)))
+Hello, time from start: "00:00:00"
+Hello, time from start: "00:00:01"
+Hello, time from start: "00:00:02"
+NIL
